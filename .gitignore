@@ -1,0 +1,18 @@
+#Ícones e temas visuais
+.icons/
+icons/YAMIS/
+
+# Backups e temporários
+*.bak
+*.swp
+*~
+*.tmp
+
+# Cache
+.cache/
+*.log
+.DS_Store
+
+# Binários locais
+.local/bin/*
+!.local/bin/.gitkeep
