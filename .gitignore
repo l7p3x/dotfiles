@@ -1,62 +1,45 @@
-# Backups and temp files
-*.bak
-*.swp
-*~
-*.tmp
 *.log
+*.tmp
+*.cache
+.cache/
+**/Cache/
+**/Code Cache/
+**/GPUCache/
+**/DawnGraphiteCache/
+**/DawnWebGPUCache/
+**/Session Storage/
+**/SharedStorage/
+**/Trust Tokens/
 
-# OS
-.DS_Store
-Thumbs.db
+mozilla/firefox/*/storage/
+mozilla/firefox/*/cache2/
+mozilla/firefox/*/crashes/
+mozilla/firefox/*/minidumps/
 
-# Editors
-.vscode/
-.idea/
+zen/*/storage/
+zen/*/cache2/
+zen/*/crashes/
 
-# Dev
-node_modules/
-venv/
-.venv/
-__pycache__/
-.mypy_cache/
-.pytest_cache/
-dist/
-build/
-target/
-.gradle/
-coverage/
-htmlcov/
-.coverage
-*.pyc
-*.class
-*.o
-*.exe
-*.dll
-*.so
-*.a
-*.obj
-*.out
+.config/hydralauncher/Cache/
+.config/hydralauncher/Code Cache/
+.config/hydralauncher/GPUCache/
+.config/hydralauncher/DawnGraphiteCache/
+.config/hydralauncher/DawnWebGPUCache/
+.config/hydralauncher/logs/
 
-# Archives
-*.zip
-*.gz
-*.tar
-*.tgz
-*.bz2
-*.xz
-*.7z
-*.rar
-*.zst
+gtk-4.0/assets/
+gtk-4.0/*.cache
 
-# Dotfiles - ignore cache/data folders
-.config/hydralauncher/
-.config/mozilla/
-.config/pulse/
-.config/dconf/
-.config/yay/
-.config/micro/backups/
-.config/micro/buffers/
+micro/backups/
+micro/buffers/
+yay/
+pulse/cookie
 
-# Themes and icons (installed separately)
-.theme/
-.icons/
+waybar/*.log
+
+xfce4/**/Thunar/*.history
+xfce4/**/Thunar/*.tmp
+
+*.swp
+*.swo
+*~
