@@ -1,141 +1,147 @@
 {
-    "layer": "top",
-    "position": "top",
-    "height": 32,
+  "spacing": 0,
+  "position": "top",
+  "reload_style_on_change": true,
+  "modules-left": [
+    "custom/logo",
+    "hyprland/workspaces",
+    "mpris",
+    "hyprland/window",
+  ],
+  "modules-center": ["clock", "custom/weather"],
+  "modules-right": ["tray", "group/group-utility"],
+
+  "custom/logo": {
+    "format": "<span size='12000'>󰣇</span>",
+    "tooltips": false,
+  },
+
+  "hyprland/workspaces": {
+    "disable-scroll": true,
+    "all-outputs": true,
+    "format": "{icon}",
+    "format-icons": {
+      "1": "1",
+      "2": "2",
+      "3": "3",
+      "4": "4",
+      "5": "5",
+      "6": "6",
+      "7": "7",
+      "8": "8",
+      "9": "9",
+      "10": "10",
+    },
+    "persistent-workspaces": {
+      "*": 3,
+    },
+  },
+
+  "mpris": {
+    "format": "{player_icon} {title}",
+
+    "player-icons": {
+      "default": "<span size='9000'>󰐹</span>",
+      "spotify": "<span size='9000'></span>",
+      "firefox": "<span size='9000'>󰈹</span>",
+    },
+  },
+
+  "hyprland/window": {
+    "format": "{class}",
+    "separate-outputs": true,
+    "tooltips": false,
+    "icon": true,
+    "icon-size": 15,
+    "max-length": 40,
+    "rewrite": {
+      ".*zen.*": "Zen",
+      ".*zed.*": "Zed",
+      ".*alacritty.*": "Alacritty",
+      ".*thunar.*": "Thunar",
+      ".*btop.*": "Btop",
+      ".*abaddon.*": "Abaddon",
+      ".*gimp.*": "GIMP",
+      ".*steam.*": "Steam",
+      ".*hydra.*": "Hydra",
+      ".*sober.*": "Sober",
+      ".*nwg-look.*": "Nwg-look",
+    },
+  },
+
+  "clock": {
+    "timezone": "America/Sao_Paulo",
+    "format": "{:L%H:%M}",
+    "format-alt": "{:L%A, %d de %B de %Y (%R)}",
+    "tooltip-format": "<tt><small>{calendar}</small></tt>",
+    "calendar": {
+      "mode": "year",
+      "mode-mon-col": 3,
+      "weeks-pos": "right",
+      "on-scroll": 1,
+      "format": {
+        "months": "<span color='#ffead3'><b>{}</b></span>",
+        "days": "<span color='#ecc6d9'><b>{}</b></span>",
+        "weeks": "<span color='#99ffdd'><b>S{}</b></span>",
+        "weekdays": "<span color='#ffcc66'><b>{}</b></span>",
+        "today": "<span color='#ff6699'><b><u>{}</u></b></span>",
+      },
+    },
+    "actions": {
+      "on-click-right": "mode",
+      "on-click-forward": "tz_up",
+      "on-click-backward": "tz_down",
+      "on-scroll-up": "shift_up",
+      "on-scroll-down": "shift_down",
+    },
+  },
+
+  "tray": {
+    "icon-size": 18,
     "spacing": 5,
-    "margin-top": 7,
-    "margin-left": 7,
-    "margin-right": 7, 
-    
-    "modules-left": [
-        "hyprland/workspaces",
-        "custom/spotifytitle",
-       /* "hyprland/window" */
-    ],
-    "modules-center": [
-        "clock",
-        "custom/weather"
-    ],
-    "modules-right": [
-        "tray",
-        "custom/updates",
-        "cpu", 
-        "memory", 
-        "pulseaudio",
-        "network"
-    ],
+    "hidden-items": ["nm_applet"],
+  },
 
-        "hyprland/workspaces": {
-        "disable-scroll": true,
-        "all-outputs": true,
-        "format": "{icon}",
-        "format-icons": {
-            "1": "󰣇", "2": "", "3": "", "4": "4", "5": "5", 
-            "6": "6", "7": "7", "8": "8", "9": "9", "10": "10"
-        },
-        "persistent-workspaces": {
-            "*": 1
-        }
+  "group/group-utility": {
+    "orientation": "inherit",
+    "drawer": {
+      "transition-duration": 500,
+      "children-class": "not-power",
+      "transition-left-to-right": false,
     },
+    "modules": ["custom/menu", "custom/updates", "pulseaudio", "network"],
+  },
 
-    "custom/spotifytitle": {
-        "format": "<span size='130%'> </span>{}",
-        "max-length": 40,
-        "return-type": "json",
-        "exec": "pww -w spotify:title -p 'null' 2> /dev/null",
-        "on-click": "~/.local/bin/toggle-spotify.sh",
-        "on-click-right": "pkill spotify",
-        "on-scroll-up": "playerctl --player=spotify next 2> /dev/null",
-        "on-scroll-down": "playerctl --player=spotify previous 2> /dev/null",
-        "on-update": "~/.local/bin/spotify-notify"
+  "custom/menu": {
+    "format": "<span size='9000'>󰣆</span>",
+    "on-click": "fuzzel",
+    "tooltip": false,
+  },
+
+  "custom/updates": {
+    "format": "󰚰 {}",
+    "exec": "checkupdates | wc -l",
+    "interval": 3600,
+    "on-click": "hyprctl dispatch exec '[float; opacity 1.0 1.0; size 35% 35%; center] xdg-terminal-exec -e sudo pacman -Syu'",
+    "tooltip-format": "{} atualizações pendentes",
+  },
+
+  "pulseaudio": {
+    "scroll-step": 5,
+    "format": "{icon} {volume}%" /* Manteremos o volume% para o ícone */,
+    "format-muted": "󰖁 Mudo",
+    "format-icons": {
+      "default": ["󰕿", "󰖀", "󰕾"],
     },
+    "on-click": "pavucontrol",
+    "on-click-right": "pactl set-sink-mute @DEFAULT_SINK@ toggle",
+  },
 
-    /* "hyprland/window": {
-        "format": "{}",
-        "max-length": 40,
-        "separate-outputs": true
-    }, */
-
-    "clock": {
-        "timezone": "America/Sao_Paulo",
-        "format": "{:L%H:%M}",
-        "format-alt": "{:L%A, %d de %B de %Y (%R)}",
-        "tooltip-format": "<tt><small>{calendar}</small></tt>",
-        "calendar": {
-            "mode": "year",
-            "mode-mon-col": 3,
-            "weeks-pos": "right",
-            "on-scroll": 1,
-            "format": {
-                "months": "<span color='#ffead3'><b>{}</b></span>", 
-                "days": "<span color='#ecc6d9'><b>{}</b></span>",
-                "weeks": "<span color='#99ffdd'><b>S{}</b></span>",
-                "weekdays": "<span color='#ffcc66'><b>{}</b></span>",
-                "today": "<span color='#ff6699'><b><u>{}</u></b></span>"
-            }
-        },
-        "actions": {
-            "on-click-right": "mode",
-            "on-click-forward": "tz_up",
-            "on-click-backward": "tz_down",
-            "on-scroll-up": "shift_up",
-            "on-scroll-down": "shift_down"
-        }
-    },
-
-    "custom/weather": {
-        "format": "{} ",
-        "exec": "python -O ~/git/weather-script/weather.py",
-        "interval": 300,
-        "tooltip": false
-     },
-
-    "tray": {
-        "icon-size": 18,
-        "spacing": 5, // Alternativa ao CSS (veja abaixo)
-        "hidden-items": ["nm_applet"]
-    },
-
-    "custom/updates": {
-        "format": "󰚰 {}",
-        "exec": "checkupdates | wc -l", // Comando para Arch
-        // Use "apt list --upgradable 2>/dev/null | grep -c '\[upgradable\]'" para Debian/Ubuntu
-        "interval": 3600, // Checa a cada hora
-        "on-click": "hyprctl dispatch exec '[float; opacity 1.0 1.0; size 35% 35%; center] foot -e sudo pacman -Syu'", // Exemplo de comando
-        "tooltip-format": "{} atualizações pendentes"
-    },
-
-    "cpu": {
-        "interval": 1,
-        "format": "  {usage}%",
-        "on-click": "foot --title 'System Monitor' -e btop",
-        "tooltip": true
-    },
-
-    "memory": {
-        "interval": 30,
-	    "format": " {used:0.1f}G ",
-        "on-click": "foot --title 'System Monitor' -e btop",
-        "tooltip": true,
-        "tooltip-format": "RAM: {used:0.1f}GB/{total:0.1f}GB ({percentage}%)\nSwap: {swapUsed:0.1f}GB/{swapTotal:0.1f}GB"
-    },
-
-    "pulseaudio": {
-        "scroll-step": 5,
-        "format": "{icon} {volume}%", /* Manteremos o volume% para o ícone */
-        "format-muted": "󰖁 Mudo",
-        "format-icons": {
-            "default": ["󰕿", "󰖀", "󰕾"]
-        },
-        "on-click": "pavucontrol",
-        "on-click-right": "pactl set-sink-mute @DEFAULT_SINK@ toggle"
-    },
-
-    "network": {
-        "format-wifi": "󰖩 ",
-        "format-ethernet": " ",
-        "format-disconnected": "󰈂 ",
-        "tooltip-format": "{ifname} ({signalStrength}%)", // Info básica
-        "on-click": "nm-connection-editor"
-    }
+  "network": {
+    "format-wifi": "󰖩",
+    "format-ethernet": "",
+    "format-disconnected": "󰈂",
+    "tooltip-format": "{ifname} ({signalStrength}%)", // Info básica
+    "on-click": "nm-connection-editor",
+  },
 }

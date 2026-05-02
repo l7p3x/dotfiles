@@ -1,103 +1,122 @@
-/* ------------------------------- */
-/* Estilo global e fonte           */
-/* ------------------------------- */
+@define-color background                rgba(0, 0, 0, 0.5);
+
+@define-color color                             #ffffff;
+
+/*----------------*/
+/*-----GLOBAL-----*/
+/*----------------*/
+
 * {
     font-family: "JetBrains Mono Nerd Font";
+    font-weight: 600;
     font-size: 10px;
-    font-weight: 500;
-    border: none;
-    border-radius: 8px;
-    min-height: 0px;
 }
 
-/* ------------------------------- */
-/* Janela principal do Waybar (Fundo Unificado) */
-/* ------------------------------- */
-window#waybar {
-    background: rgba(0, 0, 0, 0.5);
-    color: rgb(199, 199, 199);
-    border-radius: 8px;
-    margin: 7px;
+#waybar {
+    background: @background;
+    color: @color;
     transition: all 0.3s ease;
 }
 
-/* ------------------------------- */
-/* Módulos Gerais (Unificados) */
-/* ------------------------------- */
-#workspaces, #hyprland-window,
-#tray, #clock,
-#custom-updates, #cpu, #memory,
-#pulseaudio, #network,
-#custom-discord, #custom-steam, #custom-codium, #custom-torbrowser, #custom-gimp,
-#custom-spotifytitle
-{
-    background: transparent;
-    padding: 4px 4px; /* Espaçamento padrão */
-        color: rgb(199, 199, 199);
+/*--------------*/
+/*-----LOGO-----*/
+/*--------------*/
+
+#custom-logo {
+    margin-left: 10px;
+    color: @color;
 }
 
-/* ------------------------------- */
-/* Workspace e Spotify (Esquerda) */
-/* ------------------------------- */
+/*--------------------*/
+/*-----WORKSPACES-----*/
+/*--------------------*/
+
+#workspaces {
+    margin-left: 10px;
+}
+
 #workspaces button {
-    background: transparent;
-    border-radius: 4px;
-    padding: 2px 4px;
-    margin: 2px 4px;
-    color: rgb(199, 199, 199);
-    opacity: 0.5; /* Inativo = 50% */
+    color: @color;
+
+    margin: 0px;
+    padding: 0px;
+
+    transition: all 0.3s ease;
+}
+
+#workspaces button.active {
+    color: @color;
+
     transition: all 0.3s ease;
 }
 
 #workspaces button:hover {
-    opacity: 0.8; 
+    background: none;
+
+    color: @color;
+
+    box-shadow: none;
+    text-shadow: none;
+    transition: none;
+    border-color: transparent;
+
+    transition: all 0.3s ease;
 }
 
-#workspaces button.active {
-    color: rgb(199, 199, 199);; 
-    opacity: 1; /* Ativo = 100% */
+/*---------------*/
+/*-----MPRIS-----*/
+/*---------------*/
+
+#mpris {
+    margin-left: 10px;
+    color: @color;
 }
 
-/* ------------------------------- */
-/*             tooltip            */
-/* ------------------------------- */
+/*----------------*/
+/*-----WINDOW-----*/
+/*----------------*/
 
-/* Este é o container principal do tooltip */
-tooltip {
-    border-radius: 8px; /* Bordas arredondadas */
-    padding: 10px; /* Espaçamento interno */
-    font-family: "JetBrainsMono Nerd Font"; /* Fonte consistente */
+#window {
+    margin-left: 10px;
+    margin-right: 10px;
+    color: @window;
 }
 
-/* Este é o texto dentro do tooltip */
-tooltip label {
-    padding: 5px;
+/*----------------*/
+/*------TRAY------*/
+/*----------------*/
+
+/*
+#tray menu {
+    background-color: @;
+    border: 2px solid @;
 }
 
-/* ------------------------------- */
-/*             Spotify             */
-/* ------------------------------- */
-
-#custom-spotifytitle {
-  color: #c2ffc2;
-  opacity: 1;
-  transition-property: opacity;
-  transition-duration: 0.25s;
+#tray menu menuitem {
+    color: @;
 }
 
-#custom-spotifytitle.Paused,
-#custom-spotifytitle:hover,
-#custom-spotifytitle.Inactive {
-  opacity: 0.5;
+#tray menu menuitem:hover {
+    color: @;
+    background-color: @;
+} */
+
+/*---------------*/
+/*-----CLOCK-----*/
+/*---------------*/
+
+#clock {
+    color: @color;
+
+    transition: all 0.3s ease;
 }
 
-/* ------------------------------- */
-/* Dock (Apps de Fácil Acesso)     */
-/* ------------------------------- */
-#custom-discord, #custom-steam, #custom-codium, #custom-torbrowser, #custom-gimp {
-    font-size: 15px; /* Ícones maiores para o dock */
-    padding: 2px 6px;
-    color: rgb(199, 199, 199); /* Usa a cor de realce Pywal para os ícones */
+#custom-updates,
+#pulseaudio,
+#custom-menu,
+#network {
+    margin-right: 10px;
+    color: @color;
 }
 
 /* ----- */
@@ -109,39 +128,38 @@ tooltip label {
 }
 
 /* ------------------------------- */
-/* Módulo de Janela (Apps Abertos) */
+/*             tooltip            */
 /* ------------------------------- */
 
-#hyprland-window {
-    padding: 4px 8px;
-    font-style: italic;
-    font-size: 11px;
-    font-weight: 400;
-    color: rgb(199, 199, 199);
+tooltip {
+    border-radius: 8px; /* Bordas arredondadas */
+    padding: 10px; /* Espaçamento interno */
 }
 
-
-/* ------------------------------- */
-/* RAM e CPU (Blocos distintos) */
-/* ------------------------------- */
-
-#cpu {
-    color: rgb(199, 199, 199);
-    border-left: 1px solid rgba(199, 199, 199, 0.5);
-}
-#memory {
-    color: rgb(199, 199, 199);
-    border-right: 1px solid rgba(199, 199, 199, 0.5);
+tooltip label {
+    padding: 5px;
 }
 
 /* ------------------------------- */
 /*             Hover               */
 /* ------------------------------- */
 
-#pulseaudio:hover, #network:hover, #clock:hover,
-#memory:hover, #cpu:hover,
-#custom-updates:hover, #custom-discord:hover, #custom-steam:hover,
-#custom-codium:hover, #custom-torbrowser:hover, #custom-gimp:hover,
-#pulseaudio.muted, #network.disconnected {
+#mpris:hover,
+#mpris.paused,
+#workspaces button,
+#pulseaudio:hover,
+#network:hover,
+#clock:hover,
+#custom-updates:hover,
+#pulseaudio.muted,
+#network.disconnected,
+#clock:hover,
+#custom-menu:hover {
     opacity: 0.5;
+}
+
+#mpris.paused:hover,
+#workspaces button:hover,
+#workspaces button.active {
+    opacity: 1;
 }
