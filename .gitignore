@@ -1,20 +1,19 @@
+# Backups and temp files
 *.bak
 *.swp
 *~
 *.tmp
-.cache/
 *.log
+
+# OS
 .DS_Store
-.local/bin/*
-!.local/bin/.gitkeep
-*.log
-*.tmp
-*.swp
-.env
-.env.local
-.env.*
+Thumbs.db
+
+# Editors
 .vscode/
 .idea/
+
+# Dev
 node_modules/
 venv/
 .venv/
@@ -25,8 +24,9 @@ dist/
 build/
 target/
 .gradle/
-.DS_Store
-Thumbs.db
+coverage/
+htmlcov/
+.coverage
 *.pyc
 *.class
 *.o
@@ -36,9 +36,8 @@ Thumbs.db
 *.a
 *.obj
 *.out
-coverage/
-htmlcov/
-.coverage
+
+# Archives
 *.zip
 *.gz
 *.tar
@@ -48,18 +47,16 @@ htmlcov/
 *.7z
 *.rar
 *.zst
-*.lz4
-*.lzh
-*.cab
-*.arj
-*.rpm
-*.deb
-*.Z
-*.lz
-*.lzo
-*.tar.gz
-*.tar.bz2
-*.tar.xz
-*.tar.zst
+
+# Dotfiles - ignore cache/data folders
+.config/hydralauncher/
+.config/mozilla/
+.config/pulse/
+.config/dconf/
+.config/yay/
+.config/micro/backups/
+.config/micro/buffers/
+
+# Themes and icons (installed separately)
 .theme/
 .icons/
