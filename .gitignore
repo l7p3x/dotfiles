@@ -1,34 +1,45 @@
+# =========================
+# 🔹 Arquivos temporários
+# =========================
 *.log
 *.tmp
 *.swp
 *.swo
 *~
 
-*.cache
 .cache/
-
+**/cache/
 **/Cache/
 **/Code Cache/
 **/GPUCache/
 **/DawnGraphiteCache/
 **/DawnWebGPUCache/
+
 **/Session Storage/
 **/SharedStorage/
 **/Trust Tokens/
 
-mozilla/
-zen/
-hydralauncher/
+.config/mozilla/
+.config/zen/
+.config/hydralauncher/
 
-gtk-4.0/assets/
-gtk-4.0/*.cache
+.config/gtk-4.0/assets/
+.config/gtk-4.0/*.cache
 
-micro/backups/
-micro/buffers/
+.config/micro
+.config/micro
+
+.config/pulse/cookie
+
+.config/waybar/*.log
+
+.config/xfce4/**/Thunar/*.history
+.config/xfce4/**/Thunar/*.tmp
+
 yay/
-pulse/cookie
 
-waybar/*.log
+.config/dconf/
 
-xfce4/**/Thunar/*.history
-xfce4/**/Thunar/*.tmp
+*.db
+*.sqlite
+*.bak
