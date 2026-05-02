@@ -1,4 +1,4 @@
-@define-color background                rgba(0, 0, 0, 0.5);
+@define-color background                rgba(0, 0, 0, 0.2);
 
 @define-color color                             #ffffff;
 
@@ -41,6 +41,8 @@
     margin: 0px;
     padding: 0px;
 
+    min-width: 15px;
+
     transition: all 0.3s ease;
 }
 
@@ -72,13 +74,18 @@
     color: @color;
 }
 
+#mpris.stopped,
+#mpris.paused {
+    margin-left: 0px;
+    color: @color;
+}
+
 /*----------------*/
 /*-----WINDOW-----*/
 /*----------------*/
 
 #window {
     margin-left: 10px;
-    margin-right: 10px;
     color: @window;
 }
 

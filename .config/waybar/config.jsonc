@@ -20,6 +20,7 @@
     "disable-scroll": true,
     "all-outputs": true,
     "format": "{icon}",
+    "spacing": 0,
     "format-icons": {
       "1": "1",
       "2": "2",
@@ -48,17 +49,14 @@
   },
 
   "hyprland/window": {
-    "format": "{class}",
+    "format": "<span text-transform=\"capitalize\">{class}</span>",
     "separate-outputs": true,
     "tooltips": false,
     "icon": true,
     "icon-size": 15,
     "max-length": 40,
     "rewrite": {
-      ".*zen.*": "Zen",
       ".*zed.*": "Zed",
-      ".*alacritty.*": "Alacritty",
-      ".*thunar.*": "Thunar",
       ".*btop.*": "Btop",
       ".*abaddon.*": "Abaddon",
       ".*gimp.*": "GIMP",
@@ -114,7 +112,7 @@
 
   "custom/menu": {
     "format": "<span size='9000'>󰣆</span>",
-    "on-click": "fuzzel",
+    "on-click": "bash -c 'hyprlauncher || fuzzel'",
     "tooltip": false,
   },
 
@@ -122,16 +120,16 @@
     "format": "󰚰 {}",
     "exec": "checkupdates | wc -l",
     "interval": 3600,
-    "on-click": "hyprctl dispatch exec '[float; opacity 1.0 1.0; size 35% 35%; center] xdg-terminal-exec -e sudo pacman -Syu'",
+    "on-click": "hyprctl dispatch exec '[float; opacity 1.0 1.0; size 35% 35%; center] foot -e sudo pacman -Syu'",
     "tooltip-format": "{} atualizações pendentes",
   },
 
   "pulseaudio": {
     "scroll-step": 5,
-    "format": "{icon} {volume}%" /* Manteremos o volume% para o ícone */,
-    "format-muted": "󰖁 Mudo",
+    "format": "{icon}  {volume}%",
+    "format-muted": "  Mudo",
     "format-icons": {
-      "default": ["󰕿", "󰖀", "󰕾"],
+      "default": ["", "", ""],
     },
     "on-click": "pavucontrol",
     "on-click-right": "pactl set-sink-mute @DEFAULT_SINK@ toggle",
@@ -140,8 +138,7 @@
   "network": {
     "format-wifi": "󰖩",
     "format-ethernet": "",
-    "format-disconnected": "󰈂",
-    "tooltip-format": "{ifname} ({signalStrength}%)", // Info básica
-    "on-click": "nm-connection-editor",
+    "format-disconnected": "󰈀",
+    "tooltip-format": "{ifname} ({signalStrength}%)",
   },
 }
