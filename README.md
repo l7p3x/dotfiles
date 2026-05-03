@@ -1,12 +1,8 @@
 # Hyprland Dotfiles
 
-A minimalist and reproducible Hyprland (Wayland) configuration focused on aesthetics, functionality, performance, simplicity, and a clean user experience (UX).
+A minimalist and reproducible Hyprland (Wayland) configuration focused on aesthetics, performance, simplicity, and a clean user experience.
 
-This repository provides:
-- A complete Wayland environment (Hyprland + Waybar + Foot + Mako)
-- A modular installer with bootstrap, install, update, rollback, and status flows
-- Optional symlink-based deployment for easy maintenance
-- A clean and lightweight workflow optimized for daily use
+This setup is designed to be lightweight, modular, and easy to maintain.
 
 ## Table of Contents
 - [Features](#features)
@@ -16,129 +12,183 @@ This repository provides:
 - [Repository Structure](#repository-structure)
 - [Manual Installation](#manual-installation)
 - [Notes](#notes)
+- [Preview](#preview)
+
+---
 
 ## Features
 
 ### Keybindings (ALT as main modifier)
-- `ALT + T`: Open terminal (Foot)
-- `ALT + E`: Open file manager (Nautilus)
-- `ALT + R`: Open app launcher (Bemenu)
-- `ALT + F`: Open browser (Firefox)
-- `ALT + Q`: Close active window
-- `ALT + V`: Toggle floating mode
-- `ALT + S`: Toggle scratchpad (Spotify workspace)
-- `WIN + R`: Reload Hyprland configuration
-- `WIN + F1`: Toggle gamemode
-- `ALT + 1-0`: Switch workspaces
-- `ALT + SHIFT + 1-0`: Move window to workspace
+- ALT + T: Open terminal (Foot)
+- ALT + E: Open file manager (Thunar)
+- ALT + R: Open app launcher (Bemenu)
+- ALT + F: Open browser (Zen Browser / Firefox)
+- ALT + Q: Close active window
+- ALT + V: Toggle floating mode
+- ALT + S: Toggle scratchpad (Spotify workspace)
+- WIN + R: Reload Hyprland configuration
+- WIN + F1: Toggle gamemode
+- ALT + 1-0: Switch workspaces
+- ALT + SHIFT + 1-0: Move window to workspace
+
+---
 
 ### System Features
-- Automatic Spotify scratchpad on a special workspace
-- Screenshot tools (hyprshot) for full screen and region capture
-- Gamemode toggle with visual notifications
-- System monitor (btop) accessible via keybinding
-- Quick configuration reload with notification
+- Spotify scratchpad on a dedicated workspace
+- Screenshot support via hyprshot
+- Gamemode toggle with notification feedback
+- System monitor (btop)
+- Modular Hyprland config
+- GTK theming via nwg-look + xsettingsd
+
+---
 
 ### Appearance
-- Custom workspace icons
-- Transparent inactive windows (70% opacity)
-- Blur effects enabled
 - Rounded corners (8px)
-- Custom cursor theme (Qogir)
-- YAMIS icon theme (auto-installed)
+- Blur effects enabled
+- Transparent inactive windows
+- Custom cursor (Qogir)
+- GTK theming (GTK2/3/4)
+- Clean Waybar styling
+
+---
 
 ## Components
 
-- **Window Manager**: Hyprland with Master/Dwindle layouts, custom animations, blur, and transparency effects
-- **Bar**: Waybar with Spotify integration, app launchers, system monitoring, and weather widget
-- **Terminal**: Foot with JetBrains Mono Nerd Font
-- **Notifications**: Dunst with custom themes and gamemode indicators
-- **Shell**: Bash with Ble.sh enhancement and custom prompt ("ふあん")
+- Window Manager: Hyprland
+- Bar: Waybar
+- Terminal: Foot
+- Notifications: Mako
+- Shell: Zsh
+- File Manager: Thunar
+- System Monitor: btop
+
+---
 
 ## Installation
 
-Clone the repo and run the installer from inside the project directory.
+Clone the repository:
 
-```bash
+\`\`\`bash
 git clone https://github.com/YOUR_USER/dotfiles-hyprland.git ~/.local/share/dotfiles-hyprland
 cd ~/.local/share/dotfiles-hyprland
 ./install.sh
-```
+\`\`\`
 
-The default run uses the `auto` flow (`bootstrap + install`).
+Default behavior:
+bootstrap + install
 
-### Warning
-The installer can deploy files in two modes:
-- **default**: copies files to your `$HOME`
-- **--symlink**: symlinks files from this repo into your `$HOME` (do not move the repo folder after installation)
+---
+
+### Deployment Modes
+
+- default → copies files to \$HOME
+- --symlink → creates symlinks
+
+⚠️ Do not move the repo if using symlinks.
+
+---
 
 ### Installer Commands
-```bash
-./install.sh [command] [options]
-```
+
+\`\`\`bash
+./install.sh [command]
+\`\`\`
 
 | Command | Description |
-| :--- | :--- |
-| `(none)` | Full auto: bootstrap + install |
-| `bootstrap` | Install base system from scratch |
-| `install` | Deploy dotfiles |
-| `update` | Re-deploy only changed files |
-| `rollback` | Restore last backed-up files |
-| `status` | Show current install state |
+|--------|------------|
+| (none) | Full auto |
+| bootstrap | Install dependencies |
+| install | Deploy dotfiles |
+| update | Update files |
+| rollback | Restore backup |
+| status | Show state |
+
+---
 
 ## Dependencies
 
-- hyprland, waybar, foot, mako
-- hyprpaper, hypridle, hyprlauncher
-- thunar, zen browser, btop
-- hyprshot, zsh
+Core:
+- hyprland
+- waybar
+- foot
+- mako
+
+Hypr ecosystem:
+- hyprpaper
+- hypridle
+- hyprlauncher
+
+Utilities:
+- thunar
+- btop
+- hyprshot
+- zsh
+- nwg-look
+- xsettingsd
+
+Optional:
+- zen-browser or firefox
+- spotify
+
+---
 
 ## Repository Structure
 
-```text
+\`\`\`text
 .
-├── .zshrc               # Zsh configuration
-├── .gtkrc-2.0           # GTK2 theme settings
+├── .zshrc
+├── .gtkrc-2.0
 ├── .config/
-│   ├── hypr/            # Hyprland configurations (modularized)
-│   │   ├── conf/        # Split configs (appearance, input, binds, etc)
-│   │   └── assets/      # Helper scripts (gamemode, toggle)
-│   ├── waybar/          # Bar configuration (JSON + CSS)
-│   ├── foot/            # Terminal emulator settings
-│   ├── mako/            # Notification daemon (Wayland)
-│   ├── btop/            # Resource monitor config
-│   ├── gtk-3.0/         # GTK3 settings
-│   ├── gtk-4.0/         # GTK4 settings
-│   ├── Thunar/          # File manager config
-│   ├── xfce4/           # Thunar integration (xfconf)
-│   ├── nwg-look/        # GTK theming tool config
-│   ├── xsettingsd/      # X settings daemon
-│   └── zed/             # Zed editor config
-├── Wallpapers/          # Wallpaper collection
-├── screenshots/         # Desktop previews
-├── install.sh           # Installation script
-├── README.md            # Documentation
-└── .gitignore           # Git ignore rules
-```
+│   ├── hypr/
+│   │   ├── conf/
+│   │   └── assets/
+│   ├── waybar/
+│   ├── foot/
+│   ├── mako/
+│   ├── btop/
+│   ├── gtk-3.0/
+│   ├── gtk-4.0/
+│   ├── Thunar/
+│   ├── xfce4/
+│   ├── nwg-look/
+│   ├── xsettingsd/
+│   └── zed/
+├── Wallpapers/
+├── screenshots/
+├── install.sh
+├── README.md
+└── .gitignore
+\`\`\`
+
+---
 
 ## Manual Installation
 
-If you prefer to do everything manually:
-1. Install core dependencies.
-2. Copy/Symlink `.config/` entries to `~/.config/`.
-3. Copy `.zshrc` and `.gtkrc-2.0` to your `$HOME`.
-4. Copy `Wallpapers/` to `~/Pictures/Wallpapers/`.
+\`\`\`bash
+cp -r .config/* ~/.config/
+cp .zshrc ~/
+cp .gtkrc-2.0 ~/
+mkdir -p ~/Pictures/Wallpapers
+cp Wallpapers/* ~/Pictures/Wallpapers/
+\`\`\`
+
+---
 
 ## Notes
-- Primarily designed for **Arch-based** distributions.
-- Use `--dry-run` to preview all actions before applying them.
 
-- ## Preview
+- Optimized for Arch-based systems
+- Modular and easy to tweak
+- Use --dry-run before applying changes
+
+---
+
+## Preview
 
 | Launcher | Terminal |
 |---|---|
-| ![Launcher](screenshots/hyprshot1.png) | ![Terminal](screenshots/hyprshot2.png) |
+| ![](screenshots/hyprshot1.png) | ![](screenshots/hyprshot2.png) |
 
-| Zen Browser | Zeditor |
+| Browser | Editor |
 |---|---|
-| ![Zen Browser](screenshots/hyprshot3.png) | ![Zeditor](screenshots/hyprshot4.png) |
+| ![](screenshots/hyprshot3.png) | ![](screenshots/hyprshot4.png) |
