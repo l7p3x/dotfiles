@@ -682,7 +682,7 @@ run_deploy() {
 
   local THEME="Reversal-Dark"
   local ICONS="yet-another-monochrome-icon-set"
-  local CURSOR="Qogir"
+  local CURSOR="qogir-white-cursors"
   local FONT="JetBrainsMono Nerd Font 11"
 
   # GTK 3 settings.ini
