@@ -124,8 +124,8 @@ If you prefer to do everything manually:
 
 | Desktop | Terminal |
 |---|---|
-| ![Desktop](screenshots/hyprshot1.png) | ![Terminal](screenshots/hyprshot2.png) |
+| ![Launcher](screenshots/hyprshot1.png) | ![Terminal](screenshots/hyprshot2.png) |
 
 | Fuzzel | Alt desktop |
 |---|---|
-| ![Fuzzel](screenshots/hyprshot3.png) | ![Desktop 2](screenshots/hyprshot4.png) |
+| ![Zen Browser](screenshots/hyprshot3.png) | ![Zeditor](screenshots/hyprshot4.png) |
