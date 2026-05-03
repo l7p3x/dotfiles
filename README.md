@@ -88,10 +88,10 @@ The installer can deploy files in two modes:
 
 ## Dependencies
 
-- hyprland, waybar, foot, dunst
-- hyprpaper, hypridle, bemenu
-- nautilus, firefox, btop
-- playerctl, hyprshot, ble.sh
+- hyprland, waybar, foot, mako
+- hyprpaper, hypridle, hyprlauncher
+- thunar, zen browser, btop
+- hyprshot, zsh
 
 ## Repository Structure
 
