@@ -69,11 +69,11 @@ This setup is designed to be lightweight, modular, and easy to maintain.
 
 Clone the repository:
 
-\`\`\`bash
+```bash
 git clone https://github.com/YOUR_USER/dotfiles-hyprland.git ~/.local/share/dotfiles-hyprland
 cd ~/.local/share/dotfiles-hyprland
 ./install.sh
-\`\`\`
+```
 
 Default behavior:
 bootstrap + install
@@ -91,9 +91,9 @@ bootstrap + install
 
 ### Installer Commands
 
-\`\`\`bash
+```bash
 ./install.sh [command]
-\`\`\`
+```
 
 | Command | Description |
 |--------|------------|
@@ -162,13 +162,13 @@ Utilities:
 
 ## Manual Installation
 
-\`\`\`bash
+```Bash
 cp -r .config/* ~/.config/
 cp .zshrc ~/
 cp .gtkrc-2.0 ~/
 mkdir -p ~/Pictures/Wallpapers
 cp Wallpapers/* ~/Pictures/Wallpapers/
-\`\`\`
+```
 
 ---
 
