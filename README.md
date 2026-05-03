@@ -97,7 +97,6 @@ The installer can deploy files in two modes:
 
 ```text
 .
-.
 ├── .zshrc               # Zsh configuration
 ├── .gtkrc-2.0           # GTK2 theme settings
 ├── .config/
